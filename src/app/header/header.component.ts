@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  isToggled:boolean=false;
+  handleToggle(){
+    this.isToggled=!this.isToggled;
+  }
+  @HostListener('window:resize', ['$event'])
+    onWindowResize() {
+      if(window.outerWidth>=450) this.isToggled=false;
+  }
 }

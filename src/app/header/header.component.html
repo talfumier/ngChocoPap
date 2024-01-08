@@ -1,1 +1,22 @@
-<p>header works!</p>
+<header>
+  <img src="../../assets/images/logo.png" alt="Logo ChocoPap" />
+  <nav class="navbar">
+    <ul class="list-group" [ngClass]="{ toggled: isToggled }">
+      <li class="list-group-item">Accueil</li>
+      <li class="list-group-item">Boutique</li>
+      <li class="list-group-item cart">
+        <p class="cart">
+          <span>2</span>
+          <svg>
+            <use href="../../assets/icons/icons.svg#cartIcon" />
+          </svg>
+        </p>
+      </li>
+    </ul>
+    <button class="menu-toggle" (click)="handleToggle()">
+      <svg>
+        <use href="../../assets/icons/icons.svg#hamMenuIcon" />
+      </svg>
+    </button>
+  </nav>
+</header>
