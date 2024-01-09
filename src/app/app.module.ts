@@ -2,6 +2,7 @@ import { NgModule,LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,11 +29,14 @@ const routes:Routes=[
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,   
     AppRoutingModule, 
     RouterModule.forRoot(routes),  
   	ToastrModule.forRoot({ timeOut: 3000 })
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR'}  //reset default locale to fr-FR
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,50 @@
+main, main.bg1 {
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  height:100%;
+  background-image: url("../../assets/images/accueil1.jpg");
+  transition: 3s;
+}
+main.bg2 {
+  background-image: url("../../assets/images/accueil2.jpg");
+}
+main.bg3 {
+  background-image: url("../../assets/images/accueil3.jpg");
+}
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:100%;
+}
+h1 {
+  font-size:4rem;
+  color:var(--yellow);
+}
+button {
+  background-color: var(--blue);
+  color:var(--white);
+  border:none;
+  box-shadow: 5px 5px 5px var(--brown-dark);
+  font-size:1.5rem;
+  margin:50px 0;
+  padding:10px 20px;
+  cursor: pointer;
+}
+img {
+  object-fit:cover;
+  width:100%;
+  padding: 10px;
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size:6rem;
+  }
+  button{
+    font-size: 2.5rem;
+  }
+}

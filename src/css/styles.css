@@ -1,6 +1,5 @@
-/* GLOBAL STYLES */
+/* FONT STYLES */
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
-
 @font-face {
   font-family: droidSerif;
   src: url(./fonts/droidSerif/DroidSerif.ttf);
@@ -9,7 +8,7 @@
   font-family: droidSerifBold;
   src: url(./fonts/droidSerif/DroidSerif-Bold.ttf);
 }
-
+/* GLOBAL APP STYLES */
 :root {
   --white: #FFFFFF;
   --white-opaque8: rgb(255, 255, 255, .8);

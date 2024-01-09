@@ -1,10 +1,29 @@
 <header>
-  <img src="../../assets/images/logo.png" alt="Logo ChocoPap" />
+  <img src="../../assets/images/logo.png" alt="Logo ChocoPap" routerLink="/" />
   <nav class="navbar">
     <ul class="list-group" [ngClass]="{ toggled: isToggled }">
-      <li class="list-group-item">Accueil</li>
-      <li class="list-group-item">Boutique</li>
-      <li class="list-group-item cart">
+      <li
+        class="list-group-item"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Accueil
+      </li>
+      <li
+        class="list-group-item"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Boutique
+      </li>
+      <li
+        class="list-group-item cart"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <p class="cart">
           <span>2</span>
           <svg>

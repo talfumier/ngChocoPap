@@ -15,16 +15,13 @@ div.footer-main-container {
   margin: 0 auto;
   height: 100%;
 }
-
 ul:not(.social-network) {
-  min-width: 200px;
+  min-width: 280px;
   max-width: 20%;
-  padding: 15px 15px 0;
+  padding: 15px 0 0;
   margin-bottom: 0;
 }
-ul.contact {
-  min-width:280px;
-}
+
 ul li.title {
   color:var(--yellow);
   font-size: 1.7rem;
@@ -32,9 +29,10 @@ ul li.title {
 }
 
 ul.social-network {
+  min-width: 280px;
   padding:0 20px;
-  align-self: center;
   margin-bottom:20px;
+  text-align: center;
 }
 
 ul {
@@ -75,6 +73,13 @@ ul.in-line *:not(.title) {
 @media screen and (min-width: 540px) {
   div.footer-main-container {
     flex-direction: row;
-    flex-wrap: wrap;}
+    flex-wrap: wrap;
+  }
+  
+}
+@media screen and (min-width: 840px) {
+  ul.social-network {
+      text-align: left;
+    }
 
 }
