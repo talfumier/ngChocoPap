@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label for="{{ cat.key }}" [ngClass]="{ highlighted: highlighted }">
+    <input
+      ngModel
+      #field="ngModel"
+      id="{{ cat.key }}"
+      name="{{ cat.key }}"
+      type="checkbox"
+      class="form-control"
+      (ngModelChange)="handleChange(field)"
+    />
+    <p>{{ cat.value }}</p>
+  </label>
+</div>

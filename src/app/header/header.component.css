@@ -7,7 +7,7 @@ header {
   align-items: center;
   padding:10px;
   background-color: var(--brown);
-  color:var(--yellow);
+  color:var(--white-opaque8);
   width:100%;
   z-index:1000;
 }
@@ -41,18 +41,21 @@ ul li {
   height:20px;
   cursor: pointer;
 }
-ul li:hover {
+ul li:not(.active,.cart):hover {
+  color:var(--yellow);
   background-color: var(--orange-opaque8);
   transition: .3s;
 }
 
-/* ul li.active {
-  color: var(--white);
-  background-color: var(--orange);
+ul li.active {
+  color: var(--yellow);
+  /* text-decoration: underline 5px solid var(--orange);
+  text-underline-offset: 10px; */
   transition: .3s;
-} */
+}
 ul li.cart {
   font-size: 1.5rem;
+  color:var(--white-opaque8);
   margin:0 auto;
 }
 p {
@@ -64,8 +67,7 @@ p {
 svg {
   width: 20px;
   height: 20px;
-  opacity: 0.7;
-  fill:var(--yellow);
+  fill:var(--white-opaque8);
 }
 button.menu-toggle {
   display:block;

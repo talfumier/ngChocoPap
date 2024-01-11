@@ -1,0 +1,19 @@
+<div class="form-group">
+  <label for="{{ cat.key }}" [ngClass]="{ highlighted }">
+    <p>{{ cat.value }}</p>
+    <select
+      ngModel
+      #field="ngModel"
+      id="{{ cat.key }}"
+      name="{{ cat.key }}"
+      class="form-control"
+      (change)="onSelected(field)"
+    >
+      <option value="" selected></option>
+      <option *ngFor="let option of options" [value]="option">
+        <p>{{ option }}</p>
+      </option>
+    </select>
+  </label>
+  <span [ngClass]="{after}">{{ unit }}</span>
+</div>

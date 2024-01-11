@@ -1,0 +1,19 @@
+<div class="card" [routerLink]="['/product', product.id]">
+  <img
+    src="{{ '../../assets/images/' + product.image }}"
+    alt="{{ product.title }}"
+  />
+  <div class="card-info">
+    <h2 class="title">{{ product.title }}</h2>
+    <div class="card-info-text">
+      <p class="price">
+        Prix :
+        {{ product.price | currency : "€" : "symbol" : "1.2-2" }}
+      </p>
+      <p class="note">{{ "Note : " + product.note }}</p>
+    </div>
+    <button (click)="handleCartAction('add', product.id, $event)">
+      Ajouter au panier
+    </button>
+  </div>
+</div>
