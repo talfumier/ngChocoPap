@@ -1,11 +1,12 @@
 import { Component,Input, OnInit,HostListener  } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { NgModel,ControlContainer, NgModelGroup } from '@angular/forms';
 import { KeyValue } from '../products.component';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrl: './select.component.css'
+  styleUrl: './select.component.css',
+  viewProviders: [{ provide: ControlContainer, useExisting: NgModelGroup }]
 })
 export class SelectComponent implements OnInit {
   @Input() cat:KeyValue={} as KeyValue;  

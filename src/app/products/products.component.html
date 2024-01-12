@@ -3,7 +3,11 @@
   <section class="products">
     <fieldset class="form-filter">
       <legend><h2>FILTRE</h2></legend>
-      <form #form="ngForm" (ngSubmit)="reset(form)">
+      <form
+        #form="ngForm"
+        (ngSubmit)="filterReset(form)"
+        (change)="handleFilterChange(form)"
+      >
         <div class="categories" ngModelGroup="categories">
           <h3>Catégories</h3>
           <app-input *ngFor="let cat of cats" [cat]="cat"></app-input>
@@ -29,7 +33,9 @@
         </div>
         <button type="submit">Réinitialiser</button>
       </form>
-      {{ form.value | json }}
+      <!-- <p class="debug">
+        {{ form.value | json }}
+      </p> -->
     </fieldset>
     <div class="cards-container products">
       <app-card [data]="product" *ngFor="let product of products; index as idx">

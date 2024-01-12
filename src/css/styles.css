@@ -59,3 +59,7 @@ button {
 h1 {
   font-size: 4rem;
 }
+.debug {
+  font-size: 1.2rem;
+  width:100%;
+}

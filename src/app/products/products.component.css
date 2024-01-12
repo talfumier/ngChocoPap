@@ -11,6 +11,7 @@ fieldset {
   background-color: #dbd4d4;
   margin:0 15px;
   max-height:500px;
+  width:200px;
 }
 form {
   display:flex;

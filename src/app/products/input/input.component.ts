@@ -1,21 +1,21 @@
 import { Component,Input,HostListener, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { ControlContainer, NgModelGroup } from '@angular/forms';
 import { KeyValue } from '../products.component';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrl: './input.component.css'
+  styleUrl: './input.component.css',
+  viewProviders: [{ provide: ControlContainer, useExisting: NgModelGroup }]
 })
-export class InputComponent  {  
-  @Input() cat:KeyValue={} as KeyValue;
-  private _highlighted:boolean=false;
-  checked:boolean=false;
-
-  handleChange(model:NgModel){
-    this.checked=!this.checked;
-    console.log(model);
+export class InputComponent implements OnInit  {  
+  @Input() cat:KeyValue={} as KeyValue;  
+  @Input() value:boolean=false;   
+  
+  ngOnInit(): void {
+    this.value=this.cat.key === 'tous' ? true : false;
   }
+  private _highlighted:boolean=false;
   @HostListener('mouseenter') mouseover(event :Event){
     this._highlighted=true;
   }
