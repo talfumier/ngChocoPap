@@ -23,7 +23,8 @@ registerLocaleData(localeFr); //register fr-FR locale, default is en-US
 
 const routes:Routes=[
   {path:'',component:HomeComponent},  
-  {path:'products',component:ProductsComponent},
+  {path:'products',component:ProductsComponent},  
+  {path:'product/:id',component:ProductComponent},
   {path: '**', component: NotFoundComponent}
 
 ];

@@ -18,7 +18,7 @@
             *ngFor="let price of prices"
             [cat]="price"
             [options]="
-              price.key === 'pmin' ? priceOptions.pmin : priceOptions.pmax
+              price.key === 'min' ? priceOptions.min : priceOptions.max
             "
             unit="€"
           ></app-select>

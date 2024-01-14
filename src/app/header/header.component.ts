@@ -1,4 +1,6 @@
 import { Component,HostListener} from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { CartItem } from '../services/cartItem';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +8,22 @@ import { Component,HostListener} from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  isToggled:boolean=false;
+  private _isToggled:boolean=false;
+  private cart:CartItem[]=[];
+  constructor(private service:CartService) {
+    this.cart=service.cart;
+  }
+  getCartItemCount():number{   
+    return this.cart.length;
+  }
+  get isToggled():boolean {
+    return this._isToggled
+  }
   handleToggle(){
-    this.isToggled=!this.isToggled;
+    this._isToggled=!this._isToggled;
   }
   @HostListener('window:resize', ['$event'])
     onWindowResize() {
-      if(window.outerWidth>=450) this.isToggled=false;
+      if(window.outerWidth>=450) this._isToggled=false;
   }
 }

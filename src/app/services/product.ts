@@ -14,5 +14,5 @@ export interface Product {
     liqueur: boolean
   },
   description: string,
-  ingredients: string
+  ingredients: string,
 }
