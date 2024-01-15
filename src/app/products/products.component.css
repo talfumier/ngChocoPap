@@ -4,14 +4,20 @@ h1 {
 }
 section.products {
   display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:100%;
 }
 fieldset {
   border: 1px solid grey;
   border-radius: 10px;
   background-color: #dbd4d4;
-  margin:0 15px 0 30px;
-  max-height:500px;
+  /* margin:0 15px 0 30px; */
+  height:fit-content;
+  max-height:570px;
   width:200px;
+  min-width:200px;
 }
 form {
   display:flex;
@@ -26,19 +32,63 @@ h2 {
 }
 div.cards-container {
   display:flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content:center;
+  /* flex-wrap: wrap;
   justify-content:left;
-  margin:-3px 0 25px 25px;
+  margin:-3px 0 25px 25px; */
+
+}
+div.container-h3 {
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items:center;
+}
+button.chevron {
+  text-align: right;
+  width:90%;
+  height:40px;
+  margin: 10px 0 0 0;
+  padding:0;
+  background-color: transparent;
+  border:none;
+  cursor: pointer;
+}
+svg {
+  width:15px;
+  height:15px;
+  fill:var(--orange);
+  transition: transform 0.5s;
+}
+button.chevron.rotated svg{
+  transform: rotate(90deg);
 }
 h3 {
   font-size: 1.5rem;
+  margin-top:10px;
   margin-bottom: 0;
 }
-button {
+button:not(.chevron) {
   border: none;
   box-shadow: 5px 5px 5px var(--brown-dark);
   font-size: 1.3rem;
   padding: 5px 10px;
-  margin: 15px auto;
+  margin: 25px auto;
   cursor: pointer;
+}
+
+@media screen and (min-width: 576px){
+  section.products {
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+    margin:0 15px 0 30px;
+  }
+  div.cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:left;
+    margin:-3px 0 25px 25px;
+  }
 }

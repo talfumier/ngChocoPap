@@ -9,27 +9,66 @@
         (change)="handleFilterChange(form)"
       >
         <div class="categories" ngModelGroup="categories">
-          <h3>Catégories</h3>
-          <app-input *ngFor="let cat of cats" [cat]="cat"></app-input>
+          <div class="container-h3">
+            <h3>Catégories</h3>
+            <button
+              class="chevron"
+              [ngClass]="{ rotated: isRotated[0] }"
+              (click)="rotateChevron(0)"
+            >
+              <svg>
+                <use href="../../assets/icons/icons.svg#chevronIcon" />
+              </svg>
+            </button>
+          </div>
+          <div *ngIf="isRotated[0]" class="hidable">
+            <app-input *ngFor="let cat of cats" [cat]="cat"></app-input>
+          </div>
         </div>
         <div class="price" ngModelGroup="price">
-          <h3>Prix</h3>
-          <app-select
-            *ngFor="let price of prices"
-            [cat]="price"
-            [options]="
-              price.key === 'min' ? priceOptions.min : priceOptions.max
-            "
-            unit="€"
-          ></app-select>
+          <div class="container-h3">
+            <h3>Prix</h3>
+            <button
+              class="chevron"
+              [ngClass]="{ rotated: isRotated[1] }"
+              (click)="rotateChevron(1)"
+            >
+              <svg>
+                <use href="../../assets/icons/icons.svg#chevronIcon" />
+              </svg>
+            </button>
+          </div>
+          <div *ngIf="isRotated[1]" class="hidable">
+            <app-select
+              *ngFor="let price of prices"
+              [cat]="price"
+              [options]="
+                price.key === 'min' ? priceOptions.min : priceOptions.max
+              "
+              unit="€"
+            ></app-select>
+          </div>
         </div>
         <div class="note" ngModelGroup="note">
-          <h3>Note</h3>
-          <app-select
-            *ngFor="let note of notes"
-            [cat]="note"
-            [options]="noteOptions"
-          ></app-select>
+          <div class="container-h3">
+            <h3>Note</h3>
+            <button
+              class="chevron"
+              [ngClass]="{ rotated: isRotated[2] }"
+              (click)="rotateChevron(2)"
+            >
+              <svg>
+                <use href="../../assets/icons/icons.svg#chevronIcon" />
+              </svg>
+            </button>
+          </div>
+          <div *ngIf="isRotated[2]" class="hidable">
+            <app-select
+              *ngFor="let note of notes"
+              [cat]="note"
+              [options]="noteOptions"
+            ></app-select>
+          </div>
         </div>
         <button type="submit">Réinitialiser</button>
       </form>

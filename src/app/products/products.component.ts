@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
 import { Product } from '../services/product';
 import { ProductsService } from '../services/products.service';
 import { NgForm } from '@angular/forms';
@@ -14,6 +14,7 @@ export class ProductsComponent {
   private _priceOptions:PriceOptions={} as PriceOptions;
   private _notes:KeyValue[];
   private _noteOptions:number[];
+  isRotated:boolean[]=[false,false,false];
 
   private _filter:Filter={} as Filter;
   private _products:Product[]=[];
@@ -28,6 +29,8 @@ export class ProductsComponent {
     this._filter=this.getDefaultFilter();
     
     this._products=this.service.products;  
+
+    this.setRotatingChevron(window.outerWidth>=576?true:false);
   }
   get cats (){
     return this._cats;
@@ -89,7 +92,17 @@ export class ProductsComponent {
     form.setValue(this.getDefaultFilter());
     this._filter={...form.value};    
     this._products=this.service.products;   
-}
+  }
+  rotateChevron(idx:number) {
+    this.isRotated[idx]=!this.isRotated[idx];
+  }
+  setRotatingChevron(bl:boolean){
+    this.isRotated=[bl,bl,bl];
+  }
+  @HostListener('window:resize', ['$event'])
+    onWindowResize() {
+      this.setRotatingChevron(window.outerWidth>=576?true:false);
+  }
 }
 export interface KeyValue {
   key:string,value:string
