@@ -12,8 +12,9 @@
       </p>
       <p class="note">{{ "Note : " + product.note }}</p>
     </div>
-    <button (click)="handleCartAction('add', product.id, $event)">
-      Ajouter au panier
-    </button>
+    <app-addRemove
+      [id]="product.id"
+      [type]="['add', 'products']"
+    ></app-addRemove>
   </div>
 </div>

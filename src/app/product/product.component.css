@@ -49,52 +49,6 @@ div.product-ingredients {
 h2.ingredients {
   font-size: 1.8rem;;
 }
-div.counter {
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 0;
-}
-
-div.counter button.counter {
-  position: absolute;
-  top: 0;
-  left: 50px;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--blue);
-  border: none;
-  border-radius: 0 3px 3px 0 ;
-  padding: 0;
-}
-
-div.counter svg {
-  width: 30px;
-  height: 15px;
-  fill: var(--white);
-  cursor: pointer;
-}
-div.counter input {
-  font-size: 1.6rem;
-  font-weight: 600;
-  text-align: center;
-  height: 30px;
-  width: 50px;
-  padding: 0;
-  border: none;
-  border-radius: 3px 0 0 3px;
-  background-color: var(--white);
-}
-button.add-cart {
-  background-color: var(--blue);
-  color: var(--white);
-  border: none;
-  box-shadow: 5px 5px 5px var(--brown-dark);
-  font-size: 1.6rem;
-  padding: 5px 10px;
-  margin-left: 60px;
-  cursor: pointer;
-}
 
 @media screen and (min-width: 768px) {
   section.product {

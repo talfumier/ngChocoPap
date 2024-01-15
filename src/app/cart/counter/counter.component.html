@@ -1,0 +1,16 @@
+<div class="counter">
+  <input type="text" class="form-control" disabled [ngModel]="count" />
+  <button class="counter">
+    <svg (click)="handleCartIncrement(1)">
+      <use href="../../assets/icons/icons.svg#upIcon" />
+    </svg>
+    <svg (click)="handleCartIncrement(-1)">
+      <use href="../../assets/icons/icons.svg#downIcon" />
+    </svg>
+  </button>
+  <app-addRemove
+    [id]="id"
+    [type]="['add', 'product']"
+    [count]="count"
+  ></app-addRemove>
+</div>

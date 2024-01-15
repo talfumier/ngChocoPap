@@ -6,20 +6,7 @@
         Prix :
         {{ product.price | currency : "€" : "symbol" : "1.2-2" }}
       </p>
-      <div class="counter">
-        <input type="text" disabled [ngModel]="count" />
-        <button class="counter">
-          <svg (click)="handleCartIncrement(1)">
-            <use href="../../assets/icons/icons.svg#upIcon" />
-          </svg>
-          <svg (click)="handleCartIncrement(-1)">
-            <use href="../../assets/icons/icons.svg#downIcon" />
-          </svg>
-        </button>
-        <button class="add-cart" (click)="handleCartAction('add', product.id)">
-          Ajouter au panier
-        </button>
-      </div>
+      <app-counter [id]="product.id"></app-counter>
       <h2 class="description">Description</h2>
       <p class="description">{{ product.description }}</p>
     </div>

@@ -1,0 +1,15 @@
+button.cart-action {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  box-shadow: 5px 5px 5px var(--brown-dark);
+  font-size: 1.6rem;
+  padding: 5px 10px;  
+  cursor: pointer;
+}
+button.cart-action.products {
+  margin: 10px 0;
+}
+button.cart-action.product {
+  margin-left: 60px;
+}

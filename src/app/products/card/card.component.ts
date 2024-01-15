@@ -19,8 +19,4 @@ export class CardComponent implements OnInit {
   get product(){
     return this._product;
   }
-  handleCartAction(type:string,id:string,evt:Event){
-    evt.stopPropagation();
-    this.service.handleCartAction("add",this._product.id);
-  }
 }
