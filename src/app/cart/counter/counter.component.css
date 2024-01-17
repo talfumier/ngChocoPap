@@ -4,6 +4,9 @@ div.counter {
   flex-wrap: nowrap;
   padding: 0;
 }
+div.counter:has(button.cart-action.cart) {
+  flex-wrap: wrap;
+}
 
 button.counter {
   position: absolute;
@@ -34,4 +37,17 @@ input {
   border: none;
   border-radius: 3px 0 0 3px;
   background-color: var(--white);
+}
+div.counter:has(.cart) input {
+  font-size: 1.4rem;
+  width: 40px;
+}
+div.counter:has(.cart) button.counter{
+  left:40px;
+}
+@media screen and (min-width: 372px) {
+  div.counter:has(button.cart-action.cart) {
+    flex-wrap: nowrap;
+  }
+
 }

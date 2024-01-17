@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { SelectComponent } from './products/select/select.component';
 import { CounterComponent } from './cart/counter/counter.component';
 import { AddRemoveComponent } from './cart/add-remove/addRemove.component';
+import { PopupComponent } from './cart/popup/popup.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 registerLocaleData(localeFr); //register fr-FR locale, default is en-US
@@ -45,6 +47,8 @@ const routes:Routes=[
     SelectComponent,
     CounterComponent,
     AddRemoveComponent,
+    PopupComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

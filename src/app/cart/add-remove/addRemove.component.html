@@ -2,9 +2,10 @@
   class="cart-action"
   [ngClass]="{
     products: type[1] === 'products',
-    product: type[1] === 'product'
+    product: type[1] === 'product',
+    cart: type[1] === 'cart'
   }"
   (click)="handleCartAction($event)"
 >
-  {{ type[0] === "add" ? "Ajouter au panier" : "Retirer du panier" }}
+  {{ type[0] === "add" ? "Ajouter au panier" : "Retirer" }}
 </button>

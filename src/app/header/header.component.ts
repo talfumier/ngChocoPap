@@ -1,6 +1,7 @@
 import { Component,HostListener} from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../services/cartItem';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,8 @@ import { CartItem } from '../services/cartItem';
 export class HeaderComponent {
   private _isToggled:boolean=false;
   private cart:CartItem[]=[];
-  constructor(private service:CartService) {
-    this.cart=service.cart;
+  constructor(private serviceCart:CartService,private serviceModal:ModalService) {
+    this.cart=serviceCart.cart;
   }
   getCartItemCount():number{   
     return this.cart.length;
@@ -25,5 +26,10 @@ export class HeaderComponent {
   @HostListener('window:resize', ['$event'])
     onWindowResize() {
       if(window.outerWidth>=450) this._isToggled=false;
+  }
+  cartClick(){
+    const modal=this.serviceModal.getModalById("cart-modal");
+    if(!modal?.isOpen) this.serviceModal.open("cart-modal");
+    else this.serviceModal.close();
   }
 }

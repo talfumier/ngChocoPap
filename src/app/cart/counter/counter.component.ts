@@ -8,6 +8,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class CounterComponent implements OnInit {
   @Input() id:string=""; 
+  @Input() type:string[]=[]; 
   private _count:number=0;
 
   constructor(private service:CartService) {}

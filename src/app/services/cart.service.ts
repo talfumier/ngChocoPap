@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from './cartItem';
+import { Product } from './product';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private _cart:CartItem[]=[];
+
+  constructor(private service:ProductsService){}
 
   get cart():CartItem[]{
     return this._cart;
@@ -21,8 +25,11 @@ export class CartService {
     const idx=this.getCartIndex(id);  
     switch(type){
       case "add":
-        if(idx<0) this._cart.push({id,qty:count?count:0});
-        else if(count) this._cart[idx].qty=count;
+        if(idx<0) {
+          const product:Product=this.service.getProductById(id);
+          this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});
+        }
+        if(count) this._cart[idx].qty=count;
         break;
       case "remove":
         if(idx>=0) this._cart.splice(idx,-1);

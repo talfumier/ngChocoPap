@@ -1,0 +1,33 @@
+<main class="cart-popup">
+  <button class="close" (click)="close()">
+    <svg>
+      <use href="../../assets/icons/icons.svg#closeIcon" />
+    </svg>
+  </button>
+  <section class="header">
+    <h2 class="title">PANIER</h2>
+  </section>
+  <hr />
+  <p class="debug">{{ cart | json }}</p>
+  <section class="content">
+    <div class="cart-item" *ngFor="let item of cart">
+      <img
+        src="{{ '../../../../../assets/images/' + item.data?.image }}"
+        alt="{{ item.data?.title }}"
+      />
+      <div class="product-info">
+        <h3 class="cart-title">{{ item.data?.title }}</h3>
+        <p class="price">
+          {{ item.data?.price | currency : "€" : "symbol" : "1.2-2" }} l'unité
+        </p>
+      </div>
+      <app-counter [id]="item.id" [type]="['remove', 'cart']"></app-counter>
+    </div>
+  </section>
+  <hr />
+  <section class="footer">
+    <p class="total">TOTAL: {{ 00 | currency : "€" : "symbol" : "1.2-2" }}</p>
+    <button>REINITIALISER</button>
+    <button>VALIDER</button>
+  </section>
+</main>

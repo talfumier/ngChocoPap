@@ -13,3 +13,13 @@ button.cart-action.products {
 button.cart-action.product {
   margin-left: 60px;
 }
+button.cart-action.cart {
+  margin:5px 0;
+  font-size: 1.4rem;
+}
+
+@media screen and (min-width: 372px) {
+  button.cart-action.cart {
+    margin:0 40px;
+  }
+}
