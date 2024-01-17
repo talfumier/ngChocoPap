@@ -22,12 +22,13 @@ export class CartService {
     return i;
   }
   handleCartAction(type:string,id:string,count?:number) {
-    const idx=this.getCartIndex(id);  
+    let idx=this.getCartIndex(id);  
     switch(type){
       case "add":
         if(idx<0) {
           const product:Product=this.service.getProductById(id);
           this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});
+          idx=this._cart.length-1;
         }
         if(count) this._cart[idx].qty=count;
         break;
