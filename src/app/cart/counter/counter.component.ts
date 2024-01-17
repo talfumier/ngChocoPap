@@ -24,5 +24,6 @@ export class CounterComponent implements OnInit {
   handleCartIncrement(cs:number){
       if(cs<0 && this._count===0) return;
       this._count+=cs;
+      if(this.type[0]==="remove") this.service.cart[this.service.getCartIndex(this.id)].qty=this._count;
   }  
 }

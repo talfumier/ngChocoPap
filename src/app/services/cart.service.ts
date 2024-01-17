@@ -27,10 +27,9 @@ export class CartService {
       case "add":
         if(idx<0) {
           const product:Product=this.service.getProductById(id);
-          this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});
-          idx=this._cart.length-1;
+          this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});          
         }
-        if(count) this._cart[idx].qty=count;
+        else if(count) this._cart[idx].qty=count;
         break;
       case "remove":
         if(idx>=0) this._cart.splice(idx,-1);
