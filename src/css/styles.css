@@ -1,4 +1,5 @@
 /* FONT STYLES */
+@import 'ngx-toastr/toastr';
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @font-face {
   font-family: droidSerif;
@@ -8,6 +9,7 @@
   font-family: droidSerifBold;
   src: url(./fonts/droidSerif/DroidSerif-Bold.ttf);
 }
+/* Styles for toast messages*/
 /* GLOBAL APP STYLES */
 :root {
   --white: #FFFFFF;
@@ -62,4 +64,8 @@ h1 {
 .debug {
   font-size: 1.2rem;
   width:100%;
+}
+/* TOAST MESSAGES */
+.toast-message {
+  font-size: 1.5rem;
 }

@@ -8,8 +8,8 @@
     <h2 class="title">PANIER</h2>
   </section>
   <hr />
-  <p class="debug">{{ cart | json }}</p>
-  <section class="content">
+  <!-- <p class="debug">{{ cart | json }}</p> -->
+  <section class="content" *ngIf="cart.length > 0">
     <div class="cart-item" *ngFor="let item of cart">
       <img
         src="{{ '../../../../../assets/images/' + item.data?.image }}"
@@ -24,10 +24,15 @@
       <app-counter [id]="item.id" [type]="['remove', 'cart']"></app-counter>
     </div>
   </section>
-  <hr />
-  <section class="footer">
-    <p class="total">TOTAL: {{ 00 | currency : "€" : "symbol" : "1.2-2" }}</p>
-    <button>REINITIALISER</button>
-    <button>VALIDER</button>
+  <p class="empty-cart" *ngIf="cart.length === 0">VOTRE PANIER EST VIDE</p>
+  <hr *ngIf="cart.length > 0" />
+  <section class="footer" *ngIf="cart.length > 0">
+    <p class="total">
+      TOTAL: {{ getTotalPrice() | currency : "€" : "symbol" : "1.2-2" }}
+    </p>
+    <div class="footer-controls">
+      <button (click)="reset()">REINITIALISER</button>
+      <button (click)="submit()">VALIDER</button>
+    </div>
   </section>
 </main>

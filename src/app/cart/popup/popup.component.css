@@ -54,6 +54,13 @@ h3 {
 p.price {
   padding:0 5px;
 }
+p.empty-cart {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color:var(--orange);
+  text-align: center;
+  width:250px;
+}
 section.footer {
   display:flex;
   flex-direction: column;
@@ -61,14 +68,17 @@ section.footer {
   align-items: center;
   padding-bottom: 10px;
 }
+div.footer-controls {
+  display:flex;
+}
 section.footer button{
   background-color: var(--blue);
   color: var(--white);
   border: none;
   box-shadow: 5px 5px 5px var(--brown-dark);
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   padding: 5px 10px;
-  margin:5px 0;
+  margin:5px 10px;
   width:135px;
   cursor: pointer;
 }

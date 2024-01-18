@@ -7,7 +7,6 @@
       id="{{ cat.key }}"
       name="{{ cat.key }}"
       class="form-control"
-      (change)="onSelected(field)"
     >
       <option value="" selected></option>
       <option *ngFor="let option of options" [value]="option">

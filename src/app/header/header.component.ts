@@ -14,7 +14,8 @@ export class HeaderComponent {
   constructor(private serviceCart:CartService,private serviceModal:ModalService) {
     this.cart=serviceCart.cart;
   }
-  getCartItemCount():number{   
+  getCartItemCount():number{  
+    this.cart=this.serviceCart.cart
     return this.cart.length;
   }
   get isToggled():boolean {

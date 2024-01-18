@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import _ from "lodash";
 import { CartItem } from './cartItem';
 import { Product } from './product';
 import { ProductsService } from './products.service';
@@ -14,6 +15,9 @@ export class CartService {
   get cart():CartItem[]{
     return this._cart;
   }
+  set cart(value:CartItem[]){
+    this._cart=value;
+  }
   getCartIndex(id:string):number {
     let i=-1;
     this._cart.map((item,idx) => {
@@ -25,14 +29,20 @@ export class CartService {
     let idx=this.getCartIndex(id);  
     switch(type){
       case "add":
-        if(idx<0) {
-          const product:Product=this.service.getProductById(id);
-          this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});          
+        const product:Product=this.service.getProductById(id);
+        this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});  
+        const arr=_.filter(this._cart,(item) => {
+          return item.id===id;
+        });
+        if(arr.length===2) {
+          idx=this._cart.indexOf(arr[0]);
+          this._cart.splice(idx,1);
         }
-        else if(count) this._cart[idx].qty=count;
         break;
       case "remove":
-        if(idx>=0) this._cart.splice(idx,-1);
+         this._cart=_.filter(this._cart,((item) => {
+           return item.id!==id;
+         }))
     }
   } 
 }

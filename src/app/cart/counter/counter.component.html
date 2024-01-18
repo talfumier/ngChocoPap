@@ -1,5 +1,12 @@
 <div class="counter">
-  <input type="text" class="form-control" disabled [ngModel]="count" />
+  <input
+    #counterInput
+    id="{{ 'input-counter-' + type[0] }}"
+    type="text"
+    class="form-control"
+    disabled
+    [ngModel]="count"
+  />
   <button class="counter">
     <svg (click)="handleCartIncrement(1)">
       <use href="../../assets/icons/icons.svg#upIcon" />

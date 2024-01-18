@@ -14,12 +14,11 @@ export class SelectComponent implements OnInit {
   @Input() unit?:string="";
   private _highlighted:boolean=false;
   private _after:boolean=false;
+
   ngOnInit(): void {    
     if(this.unit) this._after=true;
   }
-  onSelected(model:NgModel){
-    // console.log(model);
-  }
+  
   @HostListener('mouseenter') mouseover(event :Event){
     this._highlighted=true;
   }
