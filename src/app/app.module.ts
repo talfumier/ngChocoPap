@@ -39,7 +39,7 @@ const routes:Routes=[
 
 ];
 const firebaseConfig = {
-  apiKey: "AIzaSyAneLtg0gIIwPLrTg-JLDEEw22JRTORNWk",
+  apiKey: "tbd",
   authDomain: "ngchocopap-6bb40.firebaseapp.com",
   databaseURL: "https://ngchocopap-6bb40-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "ngchocopap-6bb40",
