@@ -23,7 +23,6 @@ import { AddRemoveComponent } from './cart/add-remove/addRemove.component';
 import { PopupComponent } from './cart/popup/popup.component';
 import { ModalComponent } from './modal/modal.component';
 import { CartService } from './services/cart.service';
-import { DomService } from './services/dom.service';
 
 
 registerLocaleData(localeFr); //register fr-FR locale, default is en-US
@@ -63,8 +62,7 @@ const routes:Routes=[
   providers: [
     ProductsService,
     { provide: LOCALE_ID, useValue: 'fr-FR'},  //reset default locale to fr-FR
-    CartService,
-    DomService
+    CartService
   ],
   bootstrap: [AppComponent]
 })
