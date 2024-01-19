@@ -32,6 +32,8 @@ export class CounterComponent implements OnInit, AfterViewInit {
   }
   handleCartIncrement(cs:number){
     if(cs<0 && this._count===0) return;
+    const cartItem=this.service.cart[this.service.getCartIndex(this.id)];
+    this._count=cartItem?cartItem.qty:0;
     this._count+=cs;
     if(this.type[0]==="remove"){ 
       this.service.cart[this.service.getCartIndex(this.id)].qty=this._count;
