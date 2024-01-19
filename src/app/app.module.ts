@@ -5,6 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
+
+import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -34,6 +38,15 @@ const routes:Routes=[
   {path: '**', component: NotFoundComponent}
 
 ];
+const firebaseConfig = {
+  apiKey: "AIzaSyAneLtg0gIIwPLrTg-JLDEEw22JRTORNWk",
+  authDomain: "ngchocopap-6bb40.firebaseapp.com",
+  databaseURL: "https://ngchocopap-6bb40-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "ngchocopap-6bb40",
+  storageBucket: "ngchocopap-6bb40.appspot.com",
+  messagingSenderId: "847927763948",
+  appId: "1:847927763948:web:6211078c023ae7fad456c9"
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +70,9 @@ const routes:Routes=[
     FormsModule,
     AppRoutingModule, 
     RouterModule.forRoot(routes),  
-  	ToastrModule.forRoot({ timeOut: 3000 })
+  	ToastrModule.forRoot({ timeOut: 3000 }),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
     ProductsService,
