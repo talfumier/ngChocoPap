@@ -35,6 +35,7 @@ export class ProductsComponent implements OnInit {
     try {
       this.firebaseService.getProducts().subscribe((res) => {
         this._products=res as Product[];
+        console.log(res)
         this.done("success");//successful completion of async operation (data retrieval from Firebase)
       });
     } catch (error) {      
@@ -42,11 +43,12 @@ export class ProductsComponent implements OnInit {
     }  
    }
   done(status:string){
+    console.log(status)
     switch(status){
       case "success"://data from FireBase
         break;
       default: 
-        this._products=this.serviceProduct.products;//data from local json file
+        // this._products=this.serviceProduct.products;//data from local json file
     }
   }
   ngOnInit(): void {

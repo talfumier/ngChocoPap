@@ -27,6 +27,7 @@ import { AddRemoveComponent } from './cart/add-remove/addRemove.component';
 import { PopupComponent } from './cart/popup/popup.component';
 import { ModalComponent } from './modal/modal.component';
 import { CartService } from './services/cart.service';
+import { environment } from '../environments/environment';
 
 
 registerLocaleData(localeFr); //register fr-FR locale, default is en-US
@@ -39,7 +40,7 @@ const routes:Routes=[
 
 ];
 const firebaseConfig = {
-  apiKey: "tbd",
+  apiKey: environment.firebaseApiKey,
   authDomain: "ngchocopap-6bb40.firebaseapp.com",
   databaseURL: "https://ngchocopap-6bb40-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "ngchocopap-6bb40",
@@ -65,7 +66,7 @@ const firebaseConfig = {
     ModalComponent,
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     BrowserAnimationsModule,   
     FormsModule,
     AppRoutingModule, 
