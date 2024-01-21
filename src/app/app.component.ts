@@ -11,6 +11,6 @@ export class AppComponent implements OnInit {
   constructor(private router:Router) {}
 
   ngOnInit(): void {
-    this.router.navigate(['']);//Make sure home page is displayed after page reload
+    // this.router.navigate(['']);//Make sure home page is displayed after page reload
   }
 }
