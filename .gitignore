@@ -38,8 +38,8 @@ testem.log
 /typings
 
 # Environment
-src/environments/environment.ts
-src/environments/.env
+src/environment.ts
+src/.env
 
 # System files
 .DS_Store
