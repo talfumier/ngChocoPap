@@ -3,6 +3,7 @@ import { Product } from '../services/product';
 import { ProductsService } from '../services/products.service';
 import { NgForm } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
+import { environment } from '../../environment';
 
 @Component({
   selector: 'app-products',
@@ -42,11 +43,11 @@ export class ProductsComponent implements OnInit {
     }  
    }
   done(status:string){
-    console.log(status);
     switch(status){
       case "success"://data from FireBase
+      window.alert(environment.firebaseApiKey);
         break;
-      default: 
+      case "failure": 
         this._products=this.serviceProduct.products;//data from local json file
     }
   }
