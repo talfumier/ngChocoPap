@@ -45,7 +45,6 @@ export class ProductsComponent implements OnInit {
   done(status:string){
     switch(status){
       case "success"://data from FireBase
-      window.alert(environment.firebaseApiKey);
         break;
       case "failure": 
         this._products=this.serviceProduct.products;//data from local json file
