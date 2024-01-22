@@ -30,6 +30,7 @@ import { CartService } from './services/cart.service';
 import { environment } from '../environments/environment';
 
 
+
 registerLocaleData(localeFr); //register fr-FR locale, default is en-US
 
 const routes:Routes=[
