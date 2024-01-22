@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
     }  
    }
   done(status:string){
+    window.alert(status);
     switch(status){
       case "success"://data from FireBase
         break;
