@@ -27,7 +27,7 @@ import { AddRemoveComponent } from './cart/add-remove/addRemove.component';
 import { PopupComponent } from './cart/popup/popup.component';
 import { ModalComponent } from './modal/modal.component';
 import { CartService } from './services/cart.service';
-// import { environment } from '../environments/environment';
+import { environment } from '../environments/environment';
 
 
 

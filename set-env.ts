@@ -5,9 +5,9 @@ const setEnv = () => {
   const targetPath = './src/environments/environment.ts'//'./src/environments/environment.ts';
 // Load node modules
   // const appVersion = require('../../package.json').version;
-  // require('dotenv').config({
-  //   path: 'src/environments/.env'
-  // });
+  require('dotenv').config({
+    path: 'src/environments/.env'
+  });
 // `environment.ts` file structure, FB_API_KEY must be defined as an environment variable in the hosting server
   const envConfigFile = `export const environment = {
     firebaseApiKey: '${process.env["FB_API_KEY"]}',
