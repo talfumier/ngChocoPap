@@ -47,7 +47,7 @@ export class ProductsComponent implements OnInit {
       case "success"://data from FireBase
         break;
       default: 
-        //this._products=this.serviceProduct.products;//data from local json file
+        this._products=this.serviceProduct.products;//data from local json file
     }
   }
   ngOnInit(): void {
