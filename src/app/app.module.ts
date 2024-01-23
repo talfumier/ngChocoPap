@@ -41,7 +41,7 @@ const routes:Routes=[
 
 ];
 const firebaseConfig = {
-  apiKey:"1218",
+  apiKey:environment.firebaseApiKey,
   authDomain: "ngchocopap-6bb40.firebaseapp.com",
   databaseURL: "https://ngchocopap-6bb40-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "ngchocopap-6bb40",
