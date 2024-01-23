@@ -38,7 +38,7 @@ testem.log
 /typings
 
 # Environment
-src/environment.ts
+src/config/environment.ts
 src/.env
 
 # System files

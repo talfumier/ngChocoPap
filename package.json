@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run config && ng serve",
-    "build": "ng build",
-    "config": "set-env.ts",
+    "start": "ng serve",
+    "build": "npm run config && ng build",
+    "config": "node src/config/generate-env.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

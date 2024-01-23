@@ -3,7 +3,6 @@ import { Product } from '../services/product';
 import { ProductsService } from '../services/products.service';
 import { NgForm } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
-import { environment } from '../../environment';
 
 @Component({
   selector: 'app-products',
