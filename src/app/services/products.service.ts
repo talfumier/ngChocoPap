@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import _ from "lodash";
 import jsonData from "./products.json";
 import { Product } from './product';
-import { Criteria } from '../products/products.component';
+import { Filter } from '../products/products.component';
 import { MinMax } from '../products/products.component';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,23 @@ import { MinMax } from '../products/products.component';
 export class ProductsService {
   private _products:Product[]=[];
   constructor(){
-    this._products=jsonData;
+    this._products=jsonData; 
   }
   get products():Product[]{
     return this._products;
-  }
-  
+  }  
   getProductById(id:string):Product {
     if(!id) return {} as Product;
     return _.filter(this._products,(product) => {
       return product.id===id;
     })[0];
   }
-  getFilteredProducts(criteria:Criteria):Product[]{
+  getFilteredProducts(filter:Filter):Product[]{
+    const criteria:Criteria={categories:[],price:filter.price,note:filter.note};
+    let obj:any=filter.categories;
+    Object.keys(obj).map((key) => {
+      if(obj[key]) criteria.categories.push(key);
+    })
     return _.filter(this._products,(product:any) => {
       return this.getMatchStatus(criteria,product);
     });
@@ -57,4 +62,10 @@ export class ProductsService {
       status=value>=min && value<=max?true:false;
     return status;
   }
+}
+
+interface Criteria {
+  categories:any[],
+  price:MinMax,
+  note:MinMax
 }

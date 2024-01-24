@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit {
     this._filter=this.getDefaultFilter();
 
     this.setRotatingChevron(window.outerWidth>=576?true:false);
-  }
+    }
    refreshProducts(){
     try {
       this.firebaseService.getProducts().subscribe((res) => {
@@ -49,9 +49,9 @@ export class ProductsComponent implements OnInit {
         this._products=this.serviceProduct.products;//data from local json file
     }
   }
-  ngOnInit(): void {
+ngOnInit(): void {  
     this.refreshProducts();
-  }
+}
 
   get cats (){
     return this._cats;
@@ -100,14 +100,8 @@ export class ProductsComponent implements OnInit {
         form.setValue({...form.value,categories});
       }
     } 
-    this._filter={...form.value,categories};
-    const criteria:Criteria={categories:[],price:form.value.price,note:form.value.note};
-    let obj:any=this._filter.categories;
-    Object.keys(obj).map((key) => {
-      if(obj[key]) criteria.categories.push(key);
-    })
-    
-    this._products=this.serviceProduct.getFilteredProducts(criteria);
+    this._filter={...form.value,categories};    
+    this._products=this.serviceProduct.getFilteredProducts(this._filter);
   }  
   filterReset (form:NgForm){
     form.setValue(this.getDefaultFilter());
@@ -131,19 +125,10 @@ export interface KeyValue {
 interface PriceOptions {
   "min":number[],"max":number[]
 }
-interface Filter{
+export interface Filter{
   categories: {
     tous:boolean,blanc:boolean,lait:boolean,noir:boolean,noix:boolean,fruit:boolean,caramel:boolean,liqueur:boolean
   },
-  price:{
-    min:string,max:string
-  },
-  note:{
-    min:string,max:string
-  }
-}
-export interface Criteria {
-  categories:any[],
   price:MinMax,
   note:MinMax
 }

@@ -1,4 +1,4 @@
-import { NgModule,LOCALE_ID,isDevMode} from '@angular/core';
+import { NgModule,LOCALE_ID,isDevMode, ErrorHandler} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +28,7 @@ import { PopupComponent } from './cart/popup/popup.component';
 import { ModalComponent } from './modal/modal.component';
 import { CartService } from './services/cart.service';
 import { environment } from '../config/environment';
+import { GenericErrorHandler } from './error/errorHandler';
 
 
 
@@ -67,7 +68,7 @@ const firebaseConfig = {
     ModalComponent,
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     BrowserAnimationsModule,   
     FormsModule,
     AppRoutingModule, 
@@ -77,6 +78,7 @@ const firebaseConfig = {
     provideFirestore(() => getFirestore()),
   ],
   providers: [
+    { provide: ErrorHandler, useClass: GenericErrorHandler },
     ProductsService,
     { provide: LOCALE_ID, useValue: 'fr-FR'},  //reset default locale to fr-FR
     CartService
