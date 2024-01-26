@@ -9,6 +9,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
+import { GenericErrorHandler } from './error/errorHandler';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +19,6 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductsComponent } from './products/products.component';
 import { CardComponent } from './products/card/card.component';
-import { ProductsService } from './services/products.service';
 import { ProductComponent } from './product/product.component';
 import { InputComponent } from './products/input/input.component';
 import { FormsModule } from '@angular/forms';
@@ -26,18 +27,15 @@ import { CounterComponent } from './cart/counter/counter.component';
 import { AddRemoveComponent } from './cart/add-remove/addRemove.component';
 import { PopupComponent } from './cart/popup/popup.component';
 import { ModalComponent } from './modal/modal.component';
-import { CartService } from './services/cart.service';
 import { environment } from '../config/environment';
-import { GenericErrorHandler } from './error/errorHandler';
-
-
+import { productsResolver } from './services/firebase.service';
 
 registerLocaleData(localeFr); //register fr-FR locale, default is en-US
 
 const routes:Routes=[
   {path:'',component:HomeComponent},  
-  {path:'products',component:ProductsComponent},  
-  {path:'product/:id',component:ProductComponent},
+  {path:'products',component:ProductsComponent,resolve:{products:productsResolver}},  
+  {path:'product/:id',component:ProductComponent,resolve:{products:productsResolver}},
   {path: '**', component: NotFoundComponent}
 
 ];
@@ -50,6 +48,7 @@ const firebaseConfig = {
   messagingSenderId: "847927763948",
   appId: "1:847927763948:web:6211078c023ae7fad456c9"
 };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,9 +78,7 @@ const firebaseConfig = {
   ],
   providers: [
     { provide: ErrorHandler, useClass: GenericErrorHandler },
-    ProductsService,
     { provide: LOCALE_ID, useValue: 'fr-FR'},  //reset default locale to fr-FR
-    CartService
   ],
   bootstrap: [AppComponent]
 })

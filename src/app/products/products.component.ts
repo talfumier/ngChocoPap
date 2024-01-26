@@ -1,6 +1,6 @@
-import { Component,HostListener, OnInit } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../services/product';
-import { ProductsService } from '../services/products.service';
 import { NgForm } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
 
@@ -9,7 +9,7 @@ import { FirebaseService } from '../services/firebase.service';
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent  {
   private _cats:KeyValue[];
   private _prices:KeyValue[];
   private _priceOptions:PriceOptions={} as PriceOptions;
@@ -20,38 +20,27 @@ export class ProductsComponent implements OnInit {
   private _filter:Filter={} as Filter;
   private _products:Product[]=[];
 
-  constructor(private serviceProduct:ProductsService,private firebaseService:FirebaseService){
+  constructor(private fbs:FirebaseService, private route: ActivatedRoute){
     this._cats= [{key:"tous",value:"Tous"},{key:"blanc",value:"Chocolat blanc"},{key:"lait",value:"Chocolat au lait"},{key:"noir",value:"Chocolat noir"},{key:"noix",value:"Noix/Noisette"},{key:"fruit",value:"Fruit"},{key:"caramel",value:"Caramel"},{key:"liqueur",value:"Liqueur"}];
     this._prices=[{key:"min",value:"Prix min."},{key:"max",value:"Prix max."}];    
     this._priceOptions={min:[0,5,10,15,20],max:[5,10,15,20,25]};
     this._notes=[{key:"min",value:"Note min."},{key:"max",value:"Note max."}];   
     this._noteOptions=[0,1,2,3,4,5];
-    
-    this._filter=this.getDefaultFilter();
-
     this.setRotatingChevron(window.outerWidth>=576?true:false);
-    }
-   refreshProducts(){
-    try {
-      this.firebaseService.getProducts().subscribe((res) => {
-        this._products=res as Product[];
-        this.done("success");//successful completion of async operation (data retrieval from Firebase)
-      });
-    } catch (error) {      
-      this.done("failure");
-    }  
-   }
-  done(status:string){
-    switch(status){
-      case "success"://data from FireBase
-        break;
-      case "failure": 
-        this._products=this.serviceProduct.products;//data from local json file
-    }
+    
+    this._filter=Object.keys(fbs.activeFilter).length>0?fbs.activeFilter:this.getDefaultFilter();
+    console.log(this._filter)
+    fbs.setFilteredProducts(this._filter);
+    this._products=this.fbs.filtered;
+    
+    if(this.fbs.products.length===0)
+      this.route.data.subscribe(
+        ({products}) => {
+          this._products=products;
+          this.fbs.products=products;
+          this.fbs.filtered=products;
+        });
   }
-ngOnInit(): void {  
-    this.refreshProducts();
-}
 
   get cats (){
     return this._cats;
@@ -100,13 +89,14 @@ ngOnInit(): void {
         form.setValue({...form.value,categories});
       }
     } 
-    this._filter={...form.value,categories};    
-    this._products=this.serviceProduct.getFilteredProducts(this._filter);
+    this._filter={...form.value,categories};  
+    this.fbs.setFilteredProducts(this._filter);  
+    this._products=this.fbs.filtered;
   }  
   filterReset (form:NgForm){
     form.setValue(this.getDefaultFilter());
     this._filter={...form.value};    
-    this._products=this.serviceProduct.products;   
+    this._products=this.fbs.products;   
   }
   rotateChevron(idx:number) {
     this.isRotated[idx]=!this.isRotated[idx];

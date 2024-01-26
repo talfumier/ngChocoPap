@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import _ from "lodash";
 import { CartItem } from './cartItem';
 import { Product } from './product';
-import { ProductsService } from './products.service';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { ProductsService } from './products.service';
 export class CartService {
   private _cart:CartItem[]=[];
 
-  constructor(private service:ProductsService){}
+  constructor(private fbs:FirebaseService){}
 
   get cart():CartItem[]{
     return this._cart;
@@ -29,7 +29,7 @@ export class CartService {
     let idx=this.getCartIndex(id);  
     switch(type){
       case "add":
-        const product:Product=this.service.getProductById(id);
+        const product:Product=this.fbs.getProductById(id);
         this._cart.push({id,qty:count?count:0,data:{image:product.image,title:product.title,price:product.price}});  
         const arr=_.filter(this._cart,(item) => {
           return item.id===id;
