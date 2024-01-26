@@ -5,6 +5,7 @@ import { CartItem } from '../../services/cartItem';
 import { ModalService } from '../../services/modal.service';
 import { ToastService } from '../../services/toast.service';
 import { CounterComponent } from '../counter/counter.component';
+import { AddRemoveComponent } from '../add-remove/addRemove.component';
 
 @Component({
   selector: 'app-popup',
@@ -32,13 +33,21 @@ export class PopupComponent{
   }
   reset(){
     this.serviceCart.cart=[];
-    const result:ElementRef<HTMLInputElement>[]=_.filter(CounterComponent.getElements(),(elt:ElementRef<HTMLInputElement>) => {
+    const counterElements:ElementRef<HTMLInputElement>[]=_.filter(CounterComponent.getElements(),(elt:ElementRef<HTMLInputElement>) => {
       return !elt.nativeElement.id.includes("remove")
     });
-    result.map((elt:ElementRef<HTMLInputElement>) => {
+    counterElements.map((elt:ElementRef<HTMLInputElement>) => {
       elt.nativeElement.value="0";
     });
-    CounterComponent.setElements(result);
+    CounterComponent.setElements(counterElements);
+
+    const buttonElements:ElementRef<HTMLButtonElement>[]=_.filter(AddRemoveComponent.getElements(),(elt:ElementRef<HTMLButtonElement>) => {
+      return !elt.nativeElement.id.includes("remove")
+    });
+    buttonElements.map((elt:ElementRef<HTMLButtonElement>) => {
+      elt.nativeElement.classList.remove("disabled");
+    });
+    AddRemoveComponent.setElements(buttonElements);
   }
   submit(){
     this.toastService.toastSuccess("Votre panier a été validé avec succès !");   

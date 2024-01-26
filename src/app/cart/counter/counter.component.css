@@ -4,6 +4,7 @@ div.counter {
   flex-wrap: nowrap;
   padding: 0;
 }
+
 div.counter:has(button.cart-action.cart) {
   flex-wrap: wrap;
 }
@@ -44,6 +45,12 @@ div.counter:has(.cart) input {
 }
 div.counter:has(.cart) button.counter{
   left:40px;
+}
+div.counter:has(.disabled) button.counter, 
+div.counter:has(.disabled) svg {
+  opacity:0.8;
+  cursor:not-allowed;
+  z-index:1000;
 }
 @media screen and (min-width: 372px) {
   div.counter:has(button.cart-action.cart) {

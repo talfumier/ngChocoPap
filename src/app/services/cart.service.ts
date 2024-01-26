@@ -35,16 +35,18 @@ export class CartService {
         const arr=_.filter(this._cart,(item) => {
           return item.id===id;
         });
-        if(arr.length===2) {
-          idx=this._cart.indexOf(arr[0]);
-          this._cart.splice(idx,1);
-        }
+        // if(arr.length===2) {
+        //   idx=this._cart.indexOf(arr[0]);
+        //   this._cart.splice(idx,1);
+        // }
         break;
       case "remove":
          this._cart=_.filter(this._cart,((item) => {
            return item.id!==id;
          }))
-         CounterComponent.getElementById(id).value=0;
+         try {
+          CounterComponent.getElementById(id).value=0;          
+         } catch (error) {}
     }
   } 
 }

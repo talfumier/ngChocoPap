@@ -17,6 +17,34 @@ button.cart-action.cart {
   margin:5px 0;
   font-size: 1.4rem;
 }
+button.cart-action.disabled {
+  cursor:not-allowed;
+  opacity: 0.8;
+}
+div.tooltip.hidden {
+  visibility:hidden;
+}
+div.tooltip.visible {
+  visibility: visible;
+  position: relative;
+}
+
+div.tooltip .tooltiptext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 40px;
+  font-size: 1.5rem;
+  background-color: var(--yellow);
+  color: var(--brown);
+  font-weight: bolder;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  top:5px;
+  left: -15px;
+}
 
 @media screen and (min-width: 372px) {
   button.cart-action.cart {
