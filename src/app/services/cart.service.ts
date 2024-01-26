@@ -3,6 +3,7 @@ import _ from "lodash";
 import { CartItem } from './cartItem';
 import { Product } from './product';
 import { FirebaseService } from './firebase.service';
+import { CounterComponent } from '../cart/counter/counter.component';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,7 @@ export class CartService {
          this._cart=_.filter(this._cart,((item) => {
            return item.id!==id;
          }))
+         CounterComponent.getElementById(id).value=0;
     }
   } 
 }

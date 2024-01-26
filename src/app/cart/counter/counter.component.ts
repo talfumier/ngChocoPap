@@ -13,7 +13,7 @@ export class CounterComponent implements OnInit, AfterViewInit, OnDestroy{
   @ViewChild('counterInput') input: ElementRef={} as ElementRef;
 
   private _count:number=0;
-  private static elts:ElementRef[]=[];
+  private static elts:ElementRef<HTMLInputElement>[]=[];
 
   constructor(private service:CartService) {}
 
@@ -34,6 +34,20 @@ export class CounterComponent implements OnInit, AfterViewInit, OnDestroy{
   set count(value:number) {
     this._count=value;
   }
+  static getElements():ElementRef<HTMLInputElement>[]{
+    return this.elts;
+  }
+  static setElements(data:ElementRef<HTMLInputElement>[]):void{
+    this.elts=data;
+  }
+  static getElementById(id:string):any{
+    let result:any=undefined;
+    this.elts.map((elt:any) => {
+      if(elt.nativeElement.id===`input-counter-add-${id}`)
+        result=elt;
+    })
+    return (result as ElementRef<HTMLInputElement>).nativeElement;
+  }
   handleFocus() {
     const cartItem=this.service.cart[this.service.getCartIndex(this.id)];
     this._count=cartItem?cartItem.qty:0;
@@ -44,7 +58,7 @@ export class CounterComponent implements OnInit, AfterViewInit, OnDestroy{
     if(this.type[0]==="remove"){ 
       this.service.cart[this.service.getCartIndex(this.id)].qty=this._count;
       CounterComponent.elts.map((elt) => {
-        if((elt.nativeElement.id as string).includes("input-counter-add")) elt.nativeElement.value=this._count;
+        if((elt.nativeElement.id as string).includes("input-counter-add")) elt.nativeElement.value=this._count.toString();
       })
     }
   }  
