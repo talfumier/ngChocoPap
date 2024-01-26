@@ -89,7 +89,7 @@ export class FirebaseService {
   }
   private getPriceNoteStatus(criteria:MinMax,value:number):boolean{
     let status=false;
-    let min=parseFloat(criteria.min),max=parseFloat(criteria.max);
+    let min=parseFloat(criteria.min.toString()),max=parseFloat(criteria.max.toString());
       if(isNaN(min))min=0;
       if(isNaN(max))max=300;
       status=value>=min && value<=max?true:false;

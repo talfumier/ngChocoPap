@@ -1,6 +1,6 @@
 import { Component,Input, OnInit,HostListener  } from '@angular/core';
-import { NgModel,ControlContainer, NgModelGroup } from '@angular/forms';
-import { KeyValue } from '../products.component';
+import { ControlContainer, NgModelGroup } from '@angular/forms';
+import { KeyValue, MinMax } from '../products.component';
 
 @Component({
   selector: 'app-select',
@@ -10,12 +10,16 @@ import { KeyValue } from '../products.component';
 })
 export class SelectComponent implements OnInit {
   @Input() cat:KeyValue={} as KeyValue;  
-  @Input() options:number[]=[];
-  @Input() unit?:string="";
+  @Input() options:(string|number)[]=[];
+  @Input() unit?:string="";  
+  @Input() filter:MinMax={} as MinMax;
+
   private _highlighted:boolean=false;
   private _after:boolean=false;
+  private _value:string|number="";
 
   ngOnInit(): void {    
+    this._value=this.filter[this.cat.key as keyof MinMax];
     if(this.unit) this._after=true;
   }
   
@@ -31,5 +35,10 @@ export class SelectComponent implements OnInit {
   get after () {
     return this._after;
   }
-
+  get value(){
+    return this._value;
+  }
+  set value(data){
+    this._value=data;
+  }
 }

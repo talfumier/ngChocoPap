@@ -1,6 +1,6 @@
 import { Component,Input,HostListener, OnInit } from '@angular/core';
 import { ControlContainer, NgModelGroup } from '@angular/forms';
-import { KeyValue } from '../products.component';
+import { Categories, KeyValue } from '../products.component';
 
 @Component({
   selector: 'app-input',
@@ -10,10 +10,18 @@ import { KeyValue } from '../products.component';
 })
 export class InputComponent implements OnInit  {  
   @Input() cat:KeyValue={} as KeyValue;  
-  @Input() value:boolean=false;   
+  @Input() filter:Categories={}as Categories;   
+
+  private _value:boolean=false;
   
   ngOnInit(): void {
-    this.value=this.cat.key === 'tous' ? true : false;
+    this._value=this.filter[this.cat.key as keyof Categories]
+  }
+  get value(){
+    return this._value;
+  }
+  set value(data){
+    this._value=data;
   }
   private _highlighted:boolean=false;
   @HostListener('mouseenter') mouseover(event :Event){

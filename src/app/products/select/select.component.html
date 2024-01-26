@@ -1,8 +1,12 @@
 <div class="form-group">
   <label [ngClass]="{ highlighted }">
     <p>{{ cat.value }}</p>
-    <select ngModel #field="ngModel" name="{{ cat.key }}" class="form-control">
-      <option value="" selected></option>
+    <select
+      name="{{ cat.key }}"
+      class="form-control"
+      [(ngModel)]="value"
+      required
+    >
       <option *ngFor="let option of options" [value]="option">
         <p>{{ option }}</p>
       </option>

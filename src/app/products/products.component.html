@@ -2,7 +2,10 @@
   <h1>BOUTIQUE</h1>
   <section class="products">
     <fieldset class="form-filter">
-      <legend><h2>FILTRE</h2></legend>
+      <!-- <legend><h2>FILTRE</h2></legend>
+      <p class="debug">
+        {{ form.value | json }}
+      </p> -->
       <form
         #form="ngForm"
         (ngSubmit)="filterReset(form)"
@@ -22,7 +25,11 @@
             </button>
           </div>
           <div *ngIf="isRotated[0]" class="hidable">
-            <app-input *ngFor="let cat of cats" [cat]="cat"></app-input>
+            <app-input
+              *ngFor="let cat of cats"
+              [cat]="cat"
+              [filter]="filter.categories"
+            ></app-input>
           </div>
         </div>
         <div class="price" ngModelGroup="price">
@@ -45,6 +52,7 @@
               [options]="
                 price.key === 'min' ? priceOptions.min : priceOptions.max
               "
+              [filter]="filter.price"
               unit="€"
             ></app-select>
           </div>
@@ -67,14 +75,12 @@
               *ngFor="let note of notes"
               [cat]="note"
               [options]="noteOptions"
+              [filter]="filter.note"
             ></app-select>
           </div>
         </div>
         <button type="submit">Réinitialiser</button>
       </form>
-      <!-- <p class="debug">
-        {{ form.value | json }}
-      </p> -->
     </fieldset>
     <div class="cards-container products">
       <app-card [data]="product" *ngFor="let product of products"> </app-card>
