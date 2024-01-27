@@ -21,14 +21,10 @@ button.cart-action.disabled {
   cursor:not-allowed;
   opacity: 0.8;
 }
-div.tooltip.hidden {
-  visibility:hidden;
-}
-div.tooltip.visible {
-  visibility: visible;
+div.tooltip {
   position: relative;
+  transition: opacity .5s;
 }
-
 div.tooltip .tooltiptext {
   display: flex;
   justify-content: center;
@@ -44,6 +40,12 @@ div.tooltip .tooltiptext {
   position: absolute;
   top:5px;
   left: -15px;
+}
+div.tooltip.hidden {
+  opacity: 0;
+}
+div.tooltip.visible {
+  opacity: 1;
 }
 
 @media screen and (min-width: 372px) {

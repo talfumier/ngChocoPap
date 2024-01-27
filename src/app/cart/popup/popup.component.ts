@@ -48,6 +48,10 @@ export class PopupComponent{
       elt.nativeElement.classList.remove("disabled");
     });
     AddRemoveComponent.setElements(buttonElements);
+    setTimeout(() => {
+      this.serviceModal.close();
+    },1000)
+    
   }
   submit(){
     this.toastService.toastSuccess("Votre panier a été validé avec succès !");   

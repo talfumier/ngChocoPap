@@ -23,15 +23,7 @@
 }
 
 html {
-  font-size: 62.5%;
-  /* 16px*62.5%=10px, 1rem=10px*/
-}
-
-body {
-  font-family: 'droidSerif',serif;
-}
-div.wrapper main {
-  grid-row: 2/3;
+  font-size: 62.5%; /* 16px*62.5%=10px, 1rem=10px*/
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -45,6 +37,13 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+} 
+
+body {
+  font-family: 'droidSerif',serif;
+  background-color: rgb(0, 255, 115);
+  width:100vw;
+  box-sizing: border-box;
 }
 
 h1,

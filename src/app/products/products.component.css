@@ -1,4 +1,12 @@
 
+main {
+  box-sizing: border-box;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height:100%;
+}
 h1 {
   text-align: center;
 }
@@ -13,11 +21,9 @@ fieldset {
   border: 1px solid grey;
   border-radius: 10px;
   background-color: #dbd4d4;
-  /* margin:0 15px 0 30px; */
   height:fit-content;
-  max-height:570px;
+  max-height:550px;
   width:200px;
-  min-width:200px;
 }
 form {
   display:flex;
@@ -34,10 +40,6 @@ div.cards-container {
   display:flex;
   flex-direction: column;
   justify-content:center;
-  /* flex-wrap: wrap;
-  justify-content:left;
-  margin:-3px 0 25px 25px; */
-
 }
 div.container-h3 {
   display:flex;
@@ -83,12 +85,14 @@ button:not(.chevron) {
     flex-direction: row;
     justify-content: left;
     align-items: start;
-    margin:0 15px 0 30px;
+  }
+  fieldset {
+    margin-left: 30px;
   }
   div.cards-container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:left;
-    margin:-3px 0 25px 25px;
+    margin:0 0 25px 25px;
   }
 }

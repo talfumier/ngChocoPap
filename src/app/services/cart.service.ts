@@ -4,6 +4,7 @@ import { CartItem } from './cartItem';
 import { Product } from './product';
 import { FirebaseService } from './firebase.service';
 import { CounterComponent } from '../cart/counter/counter.component';
+import { ModalService } from './modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { CounterComponent } from '../cart/counter/counter.component';
 export class CartService {
   private _cart:CartItem[]=[];
 
-  constructor(private fbs:FirebaseService){}
+  constructor(private fbs:FirebaseService,private ms:ModalService){}
 
   get cart():CartItem[]{
     return this._cart;
@@ -35,10 +36,6 @@ export class CartService {
         const arr=_.filter(this._cart,(item) => {
           return item.id===id;
         });
-        // if(arr.length===2) {
-        //   idx=this._cart.indexOf(arr[0]);
-        //   this._cart.splice(idx,1);
-        // }
         break;
       case "remove":
          this._cart=_.filter(this._cart,((item) => {
@@ -47,6 +44,9 @@ export class CartService {
          try {
           CounterComponent.getElementById(id).value=0;          
          } catch (error) {}
+         setTimeout(() => {
+           if(this._cart.length===0) this.ms.close();
+         },1000);
     }
   } 
 }
