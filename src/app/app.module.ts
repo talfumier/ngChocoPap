@@ -3,7 +3,6 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 
 import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
@@ -28,17 +27,9 @@ import { AddRemoveComponent } from './cart/add-remove/addRemove.component';
 import { PopupComponent } from './cart/popup/popup.component';
 import { ModalComponent } from './modal/modal.component';
 import { environment } from '../config/environment';
-import { productsResolver } from './services/firebase.service';
 
 registerLocaleData(localeFr); //register fr-FR locale, default is en-US
 
-const routes:Routes=[
-  {path:'',component:HomeComponent},  
-  {path:'products',component:ProductsComponent,resolve:{products:productsResolver}},  
-  {path:'product/:id',component:ProductComponent,resolve:{products:productsResolver}},
-  {path: '**', component: NotFoundComponent}
-
-];
 const firebaseConfig = {
   apiKey:environment.firebaseApiKey,
   authDomain: "ngchocopap-6bb40.firebaseapp.com",
@@ -71,7 +62,6 @@ const firebaseConfig = {
     BrowserAnimationsModule,   
     FormsModule,
     AppRoutingModule, 
-    RouterModule.forRoot(routes),  
   	ToastrModule.forRoot({ timeOut: 3000 }),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
